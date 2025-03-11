@@ -17,6 +17,7 @@ else
 fi
 
 # Install php and required extensions
+apt install sudo -y
 sudo apt update && sudo apt install -y ca-certificates apt-transport-https software-properties-common wget
 wget -qO - https://packages.sury.org/php/apt.gpg | sudo tee /etc/apt/trusted.gpg.d/sury-php.gpg > /dev/null
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
@@ -130,7 +131,7 @@ server {
 }
 EOF
 elif [ "$choice" == "ip" ]; then
-    ip=$(curl -s ifconfig.me)
+    ip= 127.0.0.1
     cat <<EOF | sudo tee /etc/nginx/sites-available/pelican.conf
     server {
     listen 80;

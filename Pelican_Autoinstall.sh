@@ -132,17 +132,16 @@ EOF
 elif [ "$choice" == "ip" ]; then
     ip=$(hostname -I | awk '{print $1}')
     cat <<EOF | sudo tee /etc/nginx/sites-available/pelican.conf
-    server {
+server {
     listen 80;
     server_name $ip;
-
 
     root /var/www/pelican/public;
     index index.html index.htm index.php;
     charset utf-8;
 
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files \$uri \$uri/ /index.php?\$query_string;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
@@ -163,7 +162,7 @@ elif [ "$choice" == "ip" ]; then
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         fastcgi_param HTTP_PROXY "";
         fastcgi_intercept_errors off;
         fastcgi_buffer_size 16k;

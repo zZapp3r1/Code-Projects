@@ -196,7 +196,7 @@ sudo chmod -R 755 storage/* bootstrap/cache/
 sudo chown -R www-data:www-data /var/www/pelican
 
 # Clear console and display success message alongside website URL
-clear
+
 echo "Pelican has been successfully installed."
 if [ "$choice" == "ssl" ]; then
     echo "You can access your website at https://$domain/installer"

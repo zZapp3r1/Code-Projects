@@ -131,7 +131,7 @@ server {
 }
 EOF
 elif [ "$choice" == "ip" ]; then
-    ip= 127.0.0.1
+    ip= 127.0.0.1;
     cat <<EOF | sudo tee /etc/nginx/sites-available/pelican.conf
     server {
     listen 80;

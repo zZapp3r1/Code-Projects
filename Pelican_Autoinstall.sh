@@ -48,7 +48,7 @@ sudo apt-get install -y nginx
 sudo rm /etc/nginx/sites-enabled/default
 
 # Ask user if they want to use SSL with a domain name or via IP/HTTP
-read -p "Do you want to use SSL with a domain name or via IP/HTTP? (ssl/ip): " choice
+read -p "Do you want to use a domain name via https/ssl or IP via HTTP? (ssl/ip): " choice
 
 if [ "$choice" == "ssl" ]; then
     read -p "Enter your domain name: " domain
